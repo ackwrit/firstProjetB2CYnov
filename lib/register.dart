@@ -112,7 +112,7 @@ class registerState extends State<register>{
             ),
             onPressed: (){
 
-              FirestoreHelper().inscription(mail: mail, password: password, prenom: prenom);
+              FirestoreHelper().inscription(mail: mail, password: password, prenom: prenom,nom: nom);
             },
             child: Text("Inscription")
         ),

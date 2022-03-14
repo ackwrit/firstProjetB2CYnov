@@ -10,10 +10,25 @@ class FirestoreHelper{
   //Constructeur
 
   //Methode
-Future inscription({required String mail, required String password,required String prenom}) async{
+Future inscription({required String mail, required String password,required String prenom,required String nom}) async{
   UserCredential result = await auth.createUserWithEmailAndPassword(email: mail, password: password);
   User? user = result.user;
   String uid = user!.uid;
+  Map<String,dynamic> map ={
+    "NOM":nom,
+    "MAIL":mail,
+    "PRENOM":prenom
+  };
+  addUser(uid, map);
+
+  }
+
+
+addUser(String uid,Map<String,dynamic> map){
+  fire_user.doc(uid).set(map);
 
 }
+
+
+
 }
