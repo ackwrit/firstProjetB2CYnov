@@ -23,6 +23,10 @@ Future inscription({required String mail, required String password,required Stri
 
   }
 
+  Future Connect({required String mail, required String password}) async {
+    UserCredential result = await auth.signInWithEmailAndPassword(email: mail, password: password);
+  }
+
 
 addUser(String uid,Map<String,dynamic> map){
   fire_user.doc(uid).set(map);

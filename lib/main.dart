@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:projetb2c/dashboard.dart';
+import 'package:projetb2c/functions/FirestoreHelper.dart';
 import 'package:projetb2c/register.dart';
 
 
@@ -54,6 +56,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  String mail="";
+  String password ="";
 
   void _incrementCounter() {
     setState(() {
@@ -107,6 +111,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
         //Utilisateur tape son adresse mail
         TextField(
+          onChanged: (value){
+            setState(() {
+              mail = value;
+            });
+          },
           decoration: InputDecoration(
             hintText: "Entrer votre adresse mail",
             filled: true,
@@ -117,8 +126,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         SizedBox(height: 20,),
-        //Utilisateur tape son mot de passe
+        //Utilisateur
+        //tape son mot de passe
         TextField(
+          onChanged: (value){
+            setState(() {
+              password = value;
+            });
+          },
           obscureText: true,
           decoration: InputDecoration(
               hintText: "Entrer votre mot de passe",
@@ -141,6 +156,15 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: (){
 
               print("Je  suis connecté");
+              FirestoreHelper().Connect(mail: mail, password: password).then((value){
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context){
+                      return dashBoard();
+                    }
+                ));
+              }).catchError((error){
+                print(error);
+              });
             },
             child: Text("Connexion")
         ),
