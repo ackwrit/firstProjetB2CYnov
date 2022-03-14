@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projetb2c/functions/FirestoreHelper.dart';
 
 class register extends StatefulWidget{
   @override
@@ -84,7 +85,7 @@ class registerState extends State<register>{
             ),
             onPressed: (){
 
-              print("Je  suis inscris");
+              FirestoreHelper().inscription(mail: mail, password: password, prenom: prenom);
             },
             child: Text("Inscription")
         ),
