@@ -11,6 +11,12 @@ class register extends StatefulWidget{
 }
 
 class registerState extends State<register>{
+  //Variable
+  String nom="";
+  String prenom ="";
+  String mail="";
+  String password="";
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -32,6 +38,12 @@ class registerState extends State<register>{
       children: [
         SizedBox(height: 20,),
         TextField(
+          onChanged: (value){
+            setState(() {
+              mail = value;
+            });
+
+          },
           decoration: InputDecoration(
               hintText: "Entrer votre adresse mail",
               filled: true,
@@ -43,6 +55,11 @@ class registerState extends State<register>{
         ),
         SizedBox(height: 20,),
         TextField(
+          onChanged: (value){
+            setState(() {
+              password = value;
+            });
+          },
           obscureText: true,
           decoration: InputDecoration(
               hintText: "Entrer votre mot de passe",
@@ -55,6 +72,11 @@ class registerState extends State<register>{
         ),
         SizedBox(height: 20,),
         TextField(
+          onChanged: (value){
+            setState(() {
+              nom = value;
+            });
+          },
           decoration: InputDecoration(
               hintText: "Entrer nom",
               filled: true,
@@ -66,6 +88,11 @@ class registerState extends State<register>{
         ),
         SizedBox(height: 20,),
         TextField(
+          onChanged: (value){
+            setState(() {
+              prenom = value;
+            });
+          },
           decoration: InputDecoration(
               hintText: "Entrer prénom",
               filled: true,
