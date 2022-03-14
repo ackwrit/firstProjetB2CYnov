@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:projetb2c/detail.dart';
 import 'package:projetb2c/functions/FirestoreHelper.dart';
 import 'package:projetb2c/model/Utilisateur.dart';
 
@@ -39,6 +40,13 @@ class dashBoardState extends State<dashBoard>{
                 itemBuilder: (context,index){
                 Utilisateur user = Utilisateur(documents[index]);
                   return ListTile(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context){
+                            return detail(user: user);
+                          }
+                      ));
+                    },
                     title:Text("${user.prenom}"),
                     trailing: IconButton(onPressed: (){}, icon: Icon(Icons.edit)),
                   );

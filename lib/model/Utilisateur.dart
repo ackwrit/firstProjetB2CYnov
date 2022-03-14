@@ -12,7 +12,9 @@ class Utilisateur{
 
 
   //Constructeur
-Utilisateur(DocumentSnapshot snapshot){
+  Utilisateur.vide();
+
+  Utilisateur(DocumentSnapshot snapshot){
   id = snapshot.id;
   Map<String,dynamic> map = snapshot.data() as Map<String,dynamic>;
   prenom = map["PRENOM"];

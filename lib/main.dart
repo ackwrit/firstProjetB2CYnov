@@ -90,6 +90,27 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+
+  popUp(){
+    showDialog(
+      barrierDismissible: false,
+        context: context,
+        builder: (context){
+          return AlertDialog(
+            title: Text("Erreur !!!"),
+            actions: [
+              ElevatedButton(
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                  child: Text("OK")
+              )
+            ],
+          );
+        }
+    );
+  }
+
   Widget bodyPage(){
     return Column(
 
@@ -163,7 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     }
                 ));
               }).catchError((error){
-                print(error);
+                popUp();
               });
             },
             child: Text("Connexion")
