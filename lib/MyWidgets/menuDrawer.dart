@@ -42,6 +42,16 @@ class myDrawerState extends State<myDrawer>{
 
                 ElevatedButton(
                     onPressed: (){
+                      FirestoreHelper().stockageImage(fileName, byteData!).then((String lienImage){
+                        setState(() {
+                          urlImage = lienImage;
+                        });
+                      });
+                      Map<String,dynamic> map ={
+                        "AVATAR": urlImage,
+                      };
+                      FirestoreHelper().updateUser(myProfil.id, map);
+                      Navigator.pop(context);
                       //enregitrer notre image dans la base de donnée
                 },
                     child: Text("Enregitrement)"
@@ -57,6 +67,30 @@ class myDrawerState extends State<myDrawer>{
                 title: Text("Souhaitez utilser cette photo comme profil ?"),
                 content: Image.memory(byteData!),
                 actions: [
+                  ElevatedButton(
+                      onPressed: (){
+                        Navigator.pop(context);
+                      },
+                      child: Text("Annuler")
+                  ),
+
+                  ElevatedButton(
+                    onPressed: (){
+                      FirestoreHelper().stockageImage(fileName, byteData!).then((String lienImage){
+                        setState(() {
+                          urlImage = lienImage;
+                        });
+                      });
+                      Map<String,dynamic> map ={
+                        "AVATAR": urlImage,
+                      };
+                      FirestoreHelper().updateUser(myProfil.id, map);
+                      Navigator.pop(context);
+                      //enregitrer notre image dans la base de donnée
+                    },
+                    child: Text("Enregitrement)"
+                    ),
+                  )
 
                 ],
 
