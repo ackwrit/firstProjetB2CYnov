@@ -20,7 +20,7 @@ class Utilisateur{
   prenom = map["PRENOM"];
   nom = map["NOM"];
   mail = map ["MAIL"];
-  birthday = map["BIRTHDAY"];
+  //birthday = map["BIRTHDAY"];
   avatar = map["AVATAR"];
 }
 

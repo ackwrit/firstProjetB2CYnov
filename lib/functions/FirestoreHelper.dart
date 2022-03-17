@@ -1,6 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:projetb2c/model/Utilisateur.dart';
 
 class FirestoreHelper{
   //Attributs
@@ -30,6 +31,19 @@ Future inscription({required String mail, required String password,required Stri
 
 addUser(String uid,Map<String,dynamic> map){
   fire_user.doc(uid).set(map);
+
+}
+
+//Récupérer l'uuid de la partie authentification
+Future <String> getIdentifiant() async{
+  String id = auth.currentUser!.uid;
+  return id;
+}
+
+//Construire un utilisateur de type Utilisateur
+Future <Utilisateur> getUtilisateur(String uid) async{
+  DocumentSnapshot snapshot = await fire_user.doc(uid).get();
+  return Utilisateur(snapshot);
 
 }
 
