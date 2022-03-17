@@ -26,12 +26,27 @@ class myDrawerState extends State<myDrawer>{
   PopImage(){
     showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (context){
           if(Platform.isIOS){
             return CupertinoAlertDialog(
               title: Text("Souhaitez utilser cette photo comme profil ?"),
               content: Image.memory(byteData!),
               actions: [
+                ElevatedButton(
+                    onPressed: (){
+                      Navigator.pop(context);
+            },
+                    child: Text("Annuler")
+                ),
+
+                ElevatedButton(
+                    onPressed: (){
+                      //enregitrer notre image dans la base de donnée
+                },
+                    child: Text("Enregitrement)"
+                ),
+                )
 
               ],
             );
