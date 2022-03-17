@@ -34,6 +34,10 @@ addUser(String uid,Map<String,dynamic> map){
 
 }
 
+updateUser(String uid,Map<String,dynamic> map){
+  fire_user.doc(uid).update(map);
+}
+
 //Récupérer l'uuid de la partie authentification
 Future <String> getIdentifiant() async{
   String id = auth.currentUser!.uid;
